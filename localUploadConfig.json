@@ -1,0 +1,8 @@
+{
+   "src_dir"            :   "E:\traffic live\sync",
+   "bucket"             :   "v2gogo-transport",
+   "key_prefix"         :   "gif/",
+   "overwrite"          :   true,
+   "rescan_local"       :   true,
+   "skip_suffixes"      :   ".mp4"
+}
