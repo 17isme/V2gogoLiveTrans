@@ -1,8 +1,9 @@
 const child = require('child_process');
 const path = require('path');
-const AK = "cdrub6Ompxht3mxMs-A5viisVFaepJwS1vWBcAT2";
-const SK = "XmnyG6niDI0QFHz_QN-BTkAB1eTKWMQ_KSdCfPfV";
-const Bucket = "v2gogo-transport";
+// Qiniu credentials and bucket name (empty by default; fill with your own keys)
+const AK = '';
+const SK = '';
+const Bucket = '';
 // 配置密钥
 // child.execSync(`qshell account "${AK}" "${SK}" ${Bucket}`);
 // 循环同步

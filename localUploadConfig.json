@@ -1,6 +1,6 @@
 {
    "src_dir"            :   "./sync",
-   "bucket"             :   "v2gogo-transport",
+   "bucket"             :   "",
    "key_prefix"         :   "gif/",
    "overwrite"          :   true,
    "rescan_local"       :   true,
