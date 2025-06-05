@@ -1,8 +1,7 @@
 const child = require('child_process');
 const fs = require('fs');
 const path = require('path');
-
-const streamList = JSON.parse(fs.readFileSync(path.join(__dirname, 'cam.json')));
+const db = require('./db');
 
 // Ensure output directory exists
 const syncDir = path.join(__dirname, 'sync');
@@ -29,18 +28,35 @@ const mkGif = function (streamID) {
 		console.log(`读取${streamID}时，发生错误。`)
 	}
 }
+
+function fetchCodes(cb) {
+    db.all('SELECT code FROM streams ORDER BY id', (err, rows) => {
+        if (err) {
+            console.log('读取数据库错误');
+            cb([]);
+        } else {
+            cb(rows.map(r => r.code));
+        }
+    });
+}
+
 function start(interval = 10 * 1000) {
     return setInterval(() => {
-        try {
-            mkGif(streamList[runIndex]['code']);
-        } catch (e) {
-            console.log('读取流错误');
-            console.log(e);
-        }
-        runIndex++;
-        if (runIndex >= streamList.length) {
-            runIndex = 0;
-        }
+        fetchCodes((codes) => {
+            if (codes.length === 0) {
+                return;
+            }
+            if (runIndex >= codes.length) {
+                runIndex = 0;
+            }
+            try {
+                mkGif(codes[runIndex]);
+            } catch (e) {
+                console.log('读取流错误');
+                console.log(e);
+            }
+            runIndex++;
+        });
     }, interval);
 }
 
