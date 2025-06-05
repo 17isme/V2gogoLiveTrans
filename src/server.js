@@ -4,7 +4,7 @@ const path = require('path');
 const db = require('./db');
 
 // Ensure output directory exists
-const syncDir = path.join(__dirname, 'sync');
+const syncDir = path.join(__dirname, '..', 'sync');
 if (!fs.existsSync(syncDir)) {
     fs.mkdirSync(syncDir);
 }

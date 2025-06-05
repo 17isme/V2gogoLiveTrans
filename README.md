@@ -16,4 +16,10 @@ Start the web interface:
 npm start
 ```
 
-The application will be available at `http://localhost:3000/`. From there you can add, edit or remove stream entries which will be stored in `streams.db`.
+The application will automatically open `http://localhost:3000/` in your browser and begin capturing streams. From there you can add, edit or remove stream entries which will be stored in `data/streams.db`.
+
+## Repository Structure
+
+- `src/` contains application source code and views
+- `data/` stores configuration files and the SQLite database
+- `bin/` holds the `qshell` binary used for uploads

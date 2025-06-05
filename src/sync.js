@@ -5,13 +5,14 @@ const AK = '';
 const SK = '';
 const Bucket = '';
 // 配置密钥
-// child.execSync(`qshell account "${AK}" "${SK}" ${Bucket}`);
+const qshellPath = path.join(__dirname, '..', 'bin', 'qshell');
+// child.execSync(`${qshellPath} account "${AK}" "${SK}" ${Bucket}`);
 // 循环同步
 const timer = setInterval(function(){
 	console.log("sync!");
 	try {
-                const configPath = path.join(__dirname, 'localUploadConfig.json');
-                child.execSync(`qshell qupload -c 5 ${configPath}`);
+                const configPath = path.join(__dirname, '..', 'data', 'localUploadConfig.json');
+                child.execSync(`${qshellPath} qupload -c 5 ${configPath}`);
 	}catch(e){
 		console.log(e);
 	}
