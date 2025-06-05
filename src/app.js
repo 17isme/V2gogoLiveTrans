@@ -2,7 +2,7 @@ const readline = require('readline');
 const path = require('path');
 const child = require('child_process');
 const { mkGif, start } = require('./server');
-const cams = require('./cam.json');
+const cams = require('../data/cam.json');
 
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 let timer = null;
@@ -39,7 +39,7 @@ function handleMenu(answer) {
       break;
     case '3':
       try {
-        const configPath = path.join(__dirname, 'localUploadConfig.json');
+        const configPath = path.join(__dirname, '../data/localUploadConfig.json');
         child.execSync(`qshell qupload -c 5 ${configPath}`, { stdio: 'inherit' });
       } catch (e) {
         console.log('上传失败');
